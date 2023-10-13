@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="01f16fd3fbce4ca8baf7dfa32c0f1219" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="ekosModel.Bolumler" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="ekosModel.CokAratilanKitaplar" Width="1.5" PointX="5.25" PointY="10.125" />
+        <EntityTypeShape EntityType="ekosModel.hizliNotSistemi" Width="1.5" PointX="10" PointY="10.5" />
+        <EntityTypeShape EntityType="ekosModel.KitapAlanOgrenci" Width="1.5" PointX="5.25" PointY="3" />
+        <EntityTypeShape EntityType="ekosModel.KitapKategori" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="ekosModel.Kitaplar" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="ekosModel.KitapNotlar" Width="1.5" PointX="5.25" PointY="7.375" />
+        <EntityTypeShape EntityType="ekosModel.KodHataListesi" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ekosModel.Ogrenciler" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="ekosModel.Personel" Width="1.5" PointX="7.75" PointY="12.375" />
+        <EntityTypeShape EntityType="ekosModel.PersonelBeniHatirla" Width="1.5" PointX="10" PointY="13.5" />
+        <EntityTypeShape EntityType="ekosModel.PersonelHataliGiris" Width="1.5" PointX="10" PointY="16.25" />
+        <EntityTypeShape EntityType="ekosModel.PersonelLogKaydi" Width="1.5" PointX="10" PointY="19.25" />
+        <EntityTypeShape EntityType="ekosModel.PersonelSifre" Width="1.5" PointX="10" PointY="7.5" />
+        <EntityTypeShape EntityType="ekosModel.SmsGecmisi" Width="1.5" PointX="7.5" PointY="3.625" />
+        <EntityTypeShape EntityType="ekosModel.TalepEdilenKitaplar" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ekosModel.YardimMerkezi" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ekosModel.Yayinevi" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="ekosModel.Yazarlar" Width="1.5" PointX="0.75" PointY="4.375" />
+        <AssociationConnector Association="ekosModel.FK_ogrenciler_bolumler" />
+        <AssociationConnector Association="ekosModel.FK_cokAratilanKitaplar_kitaplar" />
+        <AssociationConnector Association="ekosModel.FK_hizliNotSistemi_personel" />
+        <AssociationConnector Association="ekosModel.FK_kitapAlanOgrenci_kitaplar" />
+        <AssociationConnector Association="ekosModel.FK_kitapAlanOgrenci_ogrenciler" />
+        <AssociationConnector Association="ekosModel.FK_smsGecmisi_kitapAlanOgrenci" />
+        <AssociationConnector Association="ekosModel.FK_Kitaplar_KitapKategori" />
+        <AssociationConnector Association="ekosModel.FK_kitaplar_yayinevi" />
+        <AssociationConnector Association="ekosModel.FK_kitaplar_yazarlar" />
+        <AssociationConnector Association="ekosModel.FK_kitaplar_yazarlar1" />
+        <AssociationConnector Association="ekosModel.FK_kitapNotlar_kitaplar" />
+        <AssociationConnector Association="ekosModel.FK__PersonelB__Perso__18EBB532" />
+        <AssociationConnector Association="ekosModel.FK_PersonelHataliGiris_Personel" />
+        <AssociationConnector Association="ekosModel.FK_PersonelLogKaydi_personel" />
+        <AssociationConnector Association="ekosModel.FK_personelSifre_personel" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

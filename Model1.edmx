@@ -1,0 +1,1239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ekosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bolumler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BolumAd" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CokAratilanKitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="Count" Type="int" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="hizliNotSistemi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="personelId" Type="int" />
+          <Property Name="notBaslik" Type="varchar" MaxLength="100" />
+          <Property Name="notIcerik" Type="text" />
+          <Property Name="yerineGetirildiMi" Type="bit" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KitapAlanOgrenci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrId" Type="int" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="AlisTarihi" Type="datetime" />
+          <Property Name="TeslimTarihi" Type="datetime" />
+          <Property Name="HasarliTeslim" Type="bit" />
+          <Property Name="GecenGunSayisi" Type="int" />
+          <Property Name="geciktirmeGunSayisi" Type="int" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KitapKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAd" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Isbn" Type="varchar" MaxLength="13" />
+          <Property Name="SnNumarasi" Type="varchar" MaxLength="10" />
+          <Property Name="FotoURL" Type="text" />
+          <Property Name="KitapAdi" Type="varchar" MaxLength="50" />
+          <Property Name="YazarId" Type="int" />
+          <Property Name="TercumanId" Type="int" />
+          <Property Name="KategoriId" Type="int" />
+          <Property Name="YayineviId" Type="int" />
+          <Property Name="SayfaSayisi" Type="int" />
+          <Property Name="KitapRafta" Type="bit" />
+          <Property Name="KitapArsivde" Type="bit" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KitapNotlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KitapId" Type="int" />
+          <Property Name="Notlar" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="KodHataListesi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KodNo" Type="int" />
+          <Property Name="Bilgi" Type="varchar" MaxLength="50" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ogrenciler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrNo" Type="varchar" MaxLength="15" />
+          <Property Name="OgrAd" Type="varchar" MaxLength="50" />
+          <Property Name="OgrSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="OgrTel" Type="varchar" MaxLength="15" />
+          <Property Name="OgrEposta" Type="varchar" MaxLength="500" />
+          <Property Name="BolumId" Type="int" />
+          <Property Name="SinifNo" Type="int" />
+          <Property Name="MezunMu" Type="bit" />
+          <Property Name="DisiplinCezali" Type="bit" />
+          <Property Name="KutuphaneBlok" Type="bit" />
+          <Property Name="KitapAlmaSayisi" Type="tinyint" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelNo" Type="varchar" MaxLength="20" />
+          <Property Name="GorselUrl" Type="text" />
+          <Property Name="Ad" Type="varchar" MaxLength="50" />
+          <Property Name="Soyad" Type="varchar" MaxLength="50" />
+          <Property Name="EPosta" Type="text" />
+          <Property Name="TelNo" Type="varchar" MaxLength="11" />
+          <Property Name="VarsayilanKitapGeciktirme" Type="int" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="SistemeGirisSayisi" Type="int" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonelBeniHatirla">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="aktif" Type="bit" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonelHataliGiris">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="BilgisayarAdi" Type="varchar" MaxLength="100" />
+          <Property Name="GirisTespitTarih" Type="datetime" />
+          <Property Name="aktif" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonelLogKaydi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="ProgramAdi" Type="varchar" MaxLength="50" />
+          <Property Name="GirisTarihi" Type="datetime" />
+          <Property Name="CikisTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PersonelSifre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelId" Type="int" />
+          <Property Name="KullaniciAdi" Type="varchar" MaxLength="50" />
+          <Property Name="Sifre" Type="varchar" MaxLength="100" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SmsGecmisi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OgrId" Type="int" />
+          <Property Name="Smsİcerik" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TalepEdilenKitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KitapAd" Type="varchar" MaxLength="50" />
+          <Property Name="YazarAdSoyad" Type="varchar" MaxLength="100" />
+          <Property Name="YayineviAdi" Type="varchar" MaxLength="50" />
+          <Property Name="EkstraNot" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="YardimMerkezi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Soru" Type="text" />
+          <Property Name="Cevap" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Yayinevi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogoURL" Type="text" />
+          <Property Name="YayineviAd" Type="varchar" MaxLength="50" />
+          <Property Name="WebSite" Type="text" />
+          <Property Name="Iletişim" Type="varchar" MaxLength="20" />
+          <Property Name="Adres" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Yazarlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YazarAd" Type="varchar" MaxLength="50" />
+          <Property Name="YazarSoyad" Type="varchar" MaxLength="50" />
+          <Property Name="YazarHakkinda" Type="text" />
+          <Property Name="YazarEposta" Type="text" />
+          <Property Name="KayitTarih" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__PersonelB__Perso__18EBB532">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelBeniHatirla" Type="Self.PersonelBeniHatirla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelBeniHatirla">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cokAratilanKitaplar_kitaplar">
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="0..1" />
+          <End Role="CokAratilanKitaplar" Type="Self.CokAratilanKitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CokAratilanKitaplar">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hizliNotSistemi_personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="hizliNotSistemi" Type="Self.hizliNotSistemi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hizliNotSistemi">
+              <PropertyRef Name="personelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapAlanOgrenci_kitaplar">
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="0..1" />
+          <End Role="KitapAlanOgrenci" Type="Self.KitapAlanOgrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapAlanOgrenci">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapAlanOgrenci_ogrenciler">
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="0..1" />
+          <End Role="KitapAlanOgrenci" Type="Self.KitapAlanOgrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapAlanOgrenci">
+              <PropertyRef Name="OgrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kitaplar_KitapKategori">
+          <End Role="KitapKategori" Type="Self.KitapKategori" Multiplicity="0..1" />
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KitapKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yayinevi">
+          <End Role="Yayinevi" Type="Self.Yayinevi" Multiplicity="0..1" />
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yayinevi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="YayineviId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yazarlar">
+          <End Role="Yazarlar" Type="Self.Yazarlar" Multiplicity="0..1" />
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yazarlar1">
+          <End Role="Yazarlar" Type="Self.Yazarlar" Multiplicity="0..1" />
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="TercumanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapNotlar_kitaplar">
+          <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="0..1" />
+          <End Role="KitapNotlar" Type="Self.KitapNotlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapNotlar">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ogrenciler_bolumler">
+          <End Role="Bolumler" Type="Self.Bolumler" Multiplicity="0..1" />
+          <End Role="Ogrenciler" Type="Self.Ogrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelHataliGiris_Personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelHataliGiris" Type="Self.PersonelHataliGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelHataliGiris">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelLogKaydi_personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelLogKaydi" Type="Self.PersonelLogKaydi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelLogKaydi">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personelSifre_personel">
+          <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+          <End Role="PersonelSifre" Type="Self.PersonelSifre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelSifre">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_smsGecmisi_kitapAlanOgrenci">
+          <End Role="KitapAlanOgrenci" Type="Self.KitapAlanOgrenci" Multiplicity="0..1" />
+          <End Role="SmsGecmisi" Type="Self.SmsGecmisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KitapAlanOgrenci">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmsGecmisi">
+              <PropertyRef Name="OgrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ekosModelStoreContainer">
+          <EntitySet Name="Bolumler" EntityType="Self.Bolumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CokAratilanKitaplar" EntityType="Self.CokAratilanKitaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="hizliNotSistemi" EntityType="Self.hizliNotSistemi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KitapAlanOgrenci" EntityType="Self.KitapAlanOgrenci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KitapKategori" EntityType="Self.KitapKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KitapNotlar" EntityType="Self.KitapNotlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KodHataListesi" EntityType="Self.KodHataListesi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ogrenciler" EntityType="Self.Ogrenciler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelBeniHatirla" EntityType="Self.PersonelBeniHatirla" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelHataliGiris" EntityType="Self.PersonelHataliGiris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelLogKaydi" EntityType="Self.PersonelLogKaydi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonelSifre" EntityType="Self.PersonelSifre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SmsGecmisi" EntityType="Self.SmsGecmisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TalepEdilenKitaplar" EntityType="Self.TalepEdilenKitaplar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YardimMerkezi" EntityType="Self.YardimMerkezi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yayinevi" EntityType="Self.Yayinevi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yazarlar" EntityType="Self.Yazarlar" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__PersonelB__Perso__18EBB532" Association="Self.FK__PersonelB__Perso__18EBB532">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelBeniHatirla" EntitySet="PersonelBeniHatirla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cokAratilanKitaplar_kitaplar" Association="Self.FK_cokAratilanKitaplar_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="CokAratilanKitaplar" EntitySet="CokAratilanKitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hizliNotSistemi_personel" Association="Self.FK_hizliNotSistemi_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="hizliNotSistemi" EntitySet="hizliNotSistemi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapAlanOgrenci_kitaplar" Association="Self.FK_kitapAlanOgrenci_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapAlanOgrenci_ogrenciler" Association="Self.FK_kitapAlanOgrenci_ogrenciler">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kitaplar_KitapKategori" Association="Self.FK_Kitaplar_KitapKategori">
+            <End Role="KitapKategori" EntitySet="KitapKategori" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yayinevi" Association="Self.FK_kitaplar_yayinevi">
+            <End Role="Yayinevi" EntitySet="Yayinevi" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yazarlar" Association="Self.FK_kitaplar_yazarlar">
+            <End Role="Yazarlar" EntitySet="Yazarlar" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yazarlar1" Association="Self.FK_kitaplar_yazarlar1">
+            <End Role="Yazarlar" EntitySet="Yazarlar" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapNotlar_kitaplar" Association="Self.FK_kitapNotlar_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="KitapNotlar" EntitySet="KitapNotlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ogrenciler_bolumler" Association="Self.FK_ogrenciler_bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelHataliGiris_Personel" Association="Self.FK_PersonelHataliGiris_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelHataliGiris" EntitySet="PersonelHataliGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelLogKaydi_personel" Association="Self.FK_PersonelLogKaydi_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelLogKaydi" EntitySet="PersonelLogKaydi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personelSifre_personel" Association="Self.FK_personelSifre_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelSifre" EntitySet="PersonelSifre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_smsGecmisi_kitapAlanOgrenci" Association="Self.FK_smsGecmisi_kitapAlanOgrenci">
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+            <End Role="SmsGecmisi" EntitySet="SmsGecmisi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ekosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ekosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bolumler" EntityType="ekosModel.Bolumler" />
+          <EntitySet Name="CokAratilanKitaplar" EntityType="ekosModel.CokAratilanKitaplar" />
+          <EntitySet Name="hizliNotSistemi" EntityType="ekosModel.hizliNotSistemi" />
+          <EntitySet Name="KitapAlanOgrenci" EntityType="ekosModel.KitapAlanOgrenci" />
+          <EntitySet Name="KitapKategori" EntityType="ekosModel.KitapKategori" />
+          <EntitySet Name="Kitaplar" EntityType="ekosModel.Kitaplar" />
+          <EntitySet Name="KitapNotlar" EntityType="ekosModel.KitapNotlar" />
+          <EntitySet Name="KodHataListesi" EntityType="ekosModel.KodHataListesi" />
+          <EntitySet Name="Ogrenciler" EntityType="ekosModel.Ogrenciler" />
+          <EntitySet Name="Personel" EntityType="ekosModel.Personel" />
+          <EntitySet Name="PersonelBeniHatirla" EntityType="ekosModel.PersonelBeniHatirla" />
+          <EntitySet Name="PersonelHataliGiris" EntityType="ekosModel.PersonelHataliGiris" />
+          <EntitySet Name="PersonelLogKaydi" EntityType="ekosModel.PersonelLogKaydi" />
+          <EntitySet Name="PersonelSifre" EntityType="ekosModel.PersonelSifre" />
+          <EntitySet Name="SmsGecmisi" EntityType="ekosModel.SmsGecmisi" />
+          <EntitySet Name="TalepEdilenKitaplar" EntityType="ekosModel.TalepEdilenKitaplar" />
+          <EntitySet Name="YardimMerkezi" EntityType="ekosModel.YardimMerkezi" />
+          <EntitySet Name="Yayinevi" EntityType="ekosModel.Yayinevi" />
+          <EntitySet Name="Yazarlar" EntityType="ekosModel.Yazarlar" />
+          <AssociationSet Name="FK_ogrenciler_bolumler" Association="ekosModel.FK_ogrenciler_bolumler">
+            <End Role="Bolumler" EntitySet="Bolumler" />
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cokAratilanKitaplar_kitaplar" Association="ekosModel.FK_cokAratilanKitaplar_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="CokAratilanKitaplar" EntitySet="CokAratilanKitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hizliNotSistemi_personel" Association="ekosModel.FK_hizliNotSistemi_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="hizliNotSistemi" EntitySet="hizliNotSistemi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapAlanOgrenci_kitaplar" Association="ekosModel.FK_kitapAlanOgrenci_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapAlanOgrenci_ogrenciler" Association="ekosModel.FK_kitapAlanOgrenci_ogrenciler">
+            <End Role="Ogrenciler" EntitySet="Ogrenciler" />
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_smsGecmisi_kitapAlanOgrenci" Association="ekosModel.FK_smsGecmisi_kitapAlanOgrenci">
+            <End Role="KitapAlanOgrenci" EntitySet="KitapAlanOgrenci" />
+            <End Role="SmsGecmisi" EntitySet="SmsGecmisi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kitaplar_KitapKategori" Association="ekosModel.FK_Kitaplar_KitapKategori">
+            <End Role="KitapKategori" EntitySet="KitapKategori" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yayinevi" Association="ekosModel.FK_kitaplar_yayinevi">
+            <End Role="Yayinevi" EntitySet="Yayinevi" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yazarlar" Association="ekosModel.FK_kitaplar_yazarlar">
+            <End Role="Yazarlar" EntitySet="Yazarlar" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitaplar_yazarlar1" Association="ekosModel.FK_kitaplar_yazarlar1">
+            <End Role="Yazarlar" EntitySet="Yazarlar" />
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kitapNotlar_kitaplar" Association="ekosModel.FK_kitapNotlar_kitaplar">
+            <End Role="Kitaplar" EntitySet="Kitaplar" />
+            <End Role="KitapNotlar" EntitySet="KitapNotlar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonelB__Perso__18EBB532" Association="ekosModel.FK__PersonelB__Perso__18EBB532">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelBeniHatirla" EntitySet="PersonelBeniHatirla" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelHataliGiris_Personel" Association="ekosModel.FK_PersonelHataliGiris_Personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelHataliGiris" EntitySet="PersonelHataliGiris" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PersonelLogKaydi_personel" Association="ekosModel.FK_PersonelLogKaydi_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelLogKaydi" EntitySet="PersonelLogKaydi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_personelSifre_personel" Association="ekosModel.FK_personelSifre_personel">
+            <End Role="Personel" EntitySet="Personel" />
+            <End Role="PersonelSifre" EntitySet="PersonelSifre" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bolumler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BolumAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Ogrenciler" Relationship="ekosModel.FK_ogrenciler_bolumler" FromRole="Bolumler" ToRole="Ogrenciler" />
+        </EntityType>
+        <EntityType Name="CokAratilanKitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="Count" Type="Int32" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_cokAratilanKitaplar_kitaplar" FromRole="CokAratilanKitaplar" ToRole="Kitaplar" />
+        </EntityType>
+        <EntityType Name="hizliNotSistemi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="personelId" Type="Int32" />
+          <Property Name="notBaslik" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="notIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="yerineGetirildiMi" Type="Boolean" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="ekosModel.FK_hizliNotSistemi_personel" FromRole="hizliNotSistemi" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="KitapAlanOgrenci">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrId" Type="Int32" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="AlisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="TeslimTarihi" Type="DateTime" Precision="3" />
+          <Property Name="HasarliTeslim" Type="Boolean" />
+          <Property Name="GecenGunSayisi" Type="Int32" />
+          <Property Name="geciktirmeGunSayisi" Type="Int32" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_kitapAlanOgrenci_kitaplar" FromRole="KitapAlanOgrenci" ToRole="Kitaplar" />
+          <NavigationProperty Name="Ogrenciler" Relationship="ekosModel.FK_kitapAlanOgrenci_ogrenciler" FromRole="KitapAlanOgrenci" ToRole="Ogrenciler" />
+          <NavigationProperty Name="SmsGecmisi" Relationship="ekosModel.FK_smsGecmisi_kitapAlanOgrenci" FromRole="KitapAlanOgrenci" ToRole="SmsGecmisi" />
+        </EntityType>
+        <EntityType Name="KitapKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_Kitaplar_KitapKategori" FromRole="KitapKategori" ToRole="Kitaplar" />
+        </EntityType>
+        <EntityType Name="Kitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Isbn" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="SnNumarasi" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FotoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KitapAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YazarId" Type="Int32" />
+          <Property Name="TercumanId" Type="Int32" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="YayineviId" Type="Int32" />
+          <Property Name="SayfaSayisi" Type="Int32" />
+          <Property Name="KitapRafta" Type="Boolean" />
+          <Property Name="KitapArsivde" Type="Boolean" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CokAratilanKitaplar" Relationship="ekosModel.FK_cokAratilanKitaplar_kitaplar" FromRole="Kitaplar" ToRole="CokAratilanKitaplar" />
+          <NavigationProperty Name="KitapAlanOgrenci" Relationship="ekosModel.FK_kitapAlanOgrenci_kitaplar" FromRole="Kitaplar" ToRole="KitapAlanOgrenci" />
+          <NavigationProperty Name="KitapKategori" Relationship="ekosModel.FK_Kitaplar_KitapKategori" FromRole="Kitaplar" ToRole="KitapKategori" />
+          <NavigationProperty Name="Yayinevi" Relationship="ekosModel.FK_kitaplar_yayinevi" FromRole="Kitaplar" ToRole="Yayinevi" />
+          <NavigationProperty Name="Yazarlar" Relationship="ekosModel.FK_kitaplar_yazarlar" FromRole="Kitaplar" ToRole="Yazarlar" />
+          <NavigationProperty Name="Yazarlar1" Relationship="ekosModel.FK_kitaplar_yazarlar1" FromRole="Kitaplar" ToRole="Yazarlar" />
+          <NavigationProperty Name="KitapNotlar" Relationship="ekosModel.FK_kitapNotlar_kitaplar" FromRole="Kitaplar" ToRole="KitapNotlar" />
+        </EntityType>
+        <EntityType Name="KitapNotlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitapId" Type="Int32" />
+          <Property Name="Notlar" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_kitapNotlar_kitaplar" FromRole="KitapNotlar" ToRole="Kitaplar" />
+        </EntityType>
+        <EntityType Name="KodHataListesi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KodNo" Type="Int32" />
+          <Property Name="Bilgi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Ogrenciler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OgrAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OgrTel" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="OgrEposta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BolumId" Type="Int32" />
+          <Property Name="SinifNo" Type="Int32" />
+          <Property Name="MezunMu" Type="Boolean" />
+          <Property Name="DisiplinCezali" Type="Boolean" />
+          <Property Name="KutuphaneBlok" Type="Boolean" />
+          <Property Name="KitapAlmaSayisi" Type="Byte" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Bolumler" Relationship="ekosModel.FK_ogrenciler_bolumler" FromRole="Ogrenciler" ToRole="Bolumler" />
+          <NavigationProperty Name="KitapAlanOgrenci" Relationship="ekosModel.FK_kitapAlanOgrenci_ogrenciler" FromRole="Ogrenciler" ToRole="KitapAlanOgrenci" />
+        </EntityType>
+        <EntityType Name="Personel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="GorselUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EPosta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TelNo" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="VarsayilanKitapGeciktirme" Type="Int32" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="SistemeGirisSayisi" Type="Int32" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="hizliNotSistemi" Relationship="ekosModel.FK_hizliNotSistemi_personel" FromRole="Personel" ToRole="hizliNotSistemi" />
+          <NavigationProperty Name="PersonelBeniHatirla" Relationship="ekosModel.FK__PersonelB__Perso__18EBB532" FromRole="Personel" ToRole="PersonelBeniHatirla" />
+          <NavigationProperty Name="PersonelHataliGiris" Relationship="ekosModel.FK_PersonelHataliGiris_Personel" FromRole="Personel" ToRole="PersonelHataliGiris" />
+          <NavigationProperty Name="PersonelLogKaydi" Relationship="ekosModel.FK_PersonelLogKaydi_personel" FromRole="Personel" ToRole="PersonelLogKaydi" />
+          <NavigationProperty Name="PersonelSifre" Relationship="ekosModel.FK_personelSifre_personel" FromRole="Personel" ToRole="PersonelSifre" />
+        </EntityType>
+        <EntityType Name="PersonelBeniHatirla">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="aktif" Type="Boolean" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="ekosModel.FK__PersonelB__Perso__18EBB532" FromRole="PersonelBeniHatirla" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="PersonelHataliGiris">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="BilgisayarAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GirisTespitTarih" Type="DateTime" Precision="3" />
+          <Property Name="aktif" Type="Boolean" />
+          <NavigationProperty Name="Personel" Relationship="ekosModel.FK_PersonelHataliGiris_Personel" FromRole="PersonelHataliGiris" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="PersonelLogKaydi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="ProgramAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GirisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="CikisTarihi" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="ekosModel.FK_PersonelLogKaydi_personel" FromRole="PersonelLogKaydi" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="PersonelSifre">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelId" Type="Int32" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Personel" Relationship="ekosModel.FK_personelSifre_personel" FromRole="PersonelSifre" ToRole="Personel" />
+        </EntityType>
+        <EntityType Name="SmsGecmisi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OgrId" Type="Int32" />
+          <Property Name="Smsİcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="KitapAlanOgrenci" Relationship="ekosModel.FK_smsGecmisi_kitapAlanOgrenci" FromRole="SmsGecmisi" ToRole="KitapAlanOgrenci" />
+        </EntityType>
+        <EntityType Name="TalepEdilenKitaplar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KitapAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YazarAdSoyad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="YayineviAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EkstraNot" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="YardimMerkezi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Soru" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Cevap" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Yayinevi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YayineviAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebSite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Iletişim" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_kitaplar_yayinevi" FromRole="Yayinevi" ToRole="Kitaplar" />
+        </EntityType>
+        <EntityType Name="Yazarlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YazarAd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YazarSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="YazarHakkinda" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="YazarEposta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KayitTarih" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kitaplar" Relationship="ekosModel.FK_kitaplar_yazarlar" FromRole="Yazarlar" ToRole="Kitaplar" />
+          <NavigationProperty Name="Kitaplar1" Relationship="ekosModel.FK_kitaplar_yazarlar1" FromRole="Yazarlar" ToRole="Kitaplar" />
+        </EntityType>
+        <Association Name="FK_ogrenciler_bolumler">
+          <End Type="ekosModel.Bolumler" Role="Bolumler" Multiplicity="0..1" />
+          <End Type="ekosModel.Ogrenciler" Role="Ogrenciler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bolumler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ogrenciler">
+              <PropertyRef Name="BolumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cokAratilanKitaplar_kitaplar">
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="0..1" />
+          <End Type="ekosModel.CokAratilanKitaplar" Role="CokAratilanKitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CokAratilanKitaplar">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hizliNotSistemi_personel">
+          <End Type="ekosModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="ekosModel.hizliNotSistemi" Role="hizliNotSistemi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="hizliNotSistemi">
+              <PropertyRef Name="personelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapAlanOgrenci_kitaplar">
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="0..1" />
+          <End Type="ekosModel.KitapAlanOgrenci" Role="KitapAlanOgrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapAlanOgrenci">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapAlanOgrenci_ogrenciler">
+          <End Type="ekosModel.Ogrenciler" Role="Ogrenciler" Multiplicity="0..1" />
+          <End Type="ekosModel.KitapAlanOgrenci" Role="KitapAlanOgrenci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ogrenciler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapAlanOgrenci">
+              <PropertyRef Name="OgrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_smsGecmisi_kitapAlanOgrenci">
+          <End Type="ekosModel.KitapAlanOgrenci" Role="KitapAlanOgrenci" Multiplicity="0..1" />
+          <End Type="ekosModel.SmsGecmisi" Role="SmsGecmisi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KitapAlanOgrenci">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SmsGecmisi">
+              <PropertyRef Name="OgrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kitaplar_KitapKategori">
+          <End Type="ekosModel.KitapKategori" Role="KitapKategori" Multiplicity="0..1" />
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KitapKategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yayinevi">
+          <End Type="ekosModel.Yayinevi" Role="Yayinevi" Multiplicity="0..1" />
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yayinevi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="YayineviId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yazarlar">
+          <End Type="ekosModel.Yazarlar" Role="Yazarlar" Multiplicity="0..1" />
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="YazarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitaplar_yazarlar1">
+          <End Type="ekosModel.Yazarlar" Role="Yazarlar" Multiplicity="0..1" />
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yazarlar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Kitaplar">
+              <PropertyRef Name="TercumanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kitapNotlar_kitaplar">
+          <End Type="ekosModel.Kitaplar" Role="Kitaplar" Multiplicity="0..1" />
+          <End Type="ekosModel.KitapNotlar" Role="KitapNotlar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kitaplar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KitapNotlar">
+              <PropertyRef Name="KitapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonelB__Perso__18EBB532">
+          <End Type="ekosModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="ekosModel.PersonelBeniHatirla" Role="PersonelBeniHatirla" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelBeniHatirla">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelHataliGiris_Personel">
+          <End Type="ekosModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="ekosModel.PersonelHataliGiris" Role="PersonelHataliGiris" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelHataliGiris">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PersonelLogKaydi_personel">
+          <End Type="ekosModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="ekosModel.PersonelLogKaydi" Role="PersonelLogKaydi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelLogKaydi">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_personelSifre_personel">
+          <End Type="ekosModel.Personel" Role="Personel" Multiplicity="0..1" />
+          <End Type="ekosModel.PersonelSifre" Role="PersonelSifre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonelSifre">
+              <PropertyRef Name="PersonelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ekosModelStoreContainer" CdmEntityContainer="ekosEntities">
+          <EntitySetMapping Name="Bolumler">
+            <EntityTypeMapping TypeName="ekosModel.Bolumler">
+              <MappingFragment StoreEntitySet="Bolumler">
+                <ScalarProperty Name="BolumAd" ColumnName="BolumAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CokAratilanKitaplar">
+            <EntityTypeMapping TypeName="ekosModel.CokAratilanKitaplar">
+              <MappingFragment StoreEntitySet="CokAratilanKitaplar">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hizliNotSistemi">
+            <EntityTypeMapping TypeName="ekosModel.hizliNotSistemi">
+              <MappingFragment StoreEntitySet="hizliNotSistemi">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="yerineGetirildiMi" ColumnName="yerineGetirildiMi" />
+                <ScalarProperty Name="notIcerik" ColumnName="notIcerik" />
+                <ScalarProperty Name="notBaslik" ColumnName="notBaslik" />
+                <ScalarProperty Name="personelId" ColumnName="personelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KitapAlanOgrenci">
+            <EntityTypeMapping TypeName="ekosModel.KitapAlanOgrenci">
+              <MappingFragment StoreEntitySet="KitapAlanOgrenci">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="geciktirmeGunSayisi" ColumnName="geciktirmeGunSayisi" />
+                <ScalarProperty Name="GecenGunSayisi" ColumnName="GecenGunSayisi" />
+                <ScalarProperty Name="HasarliTeslim" ColumnName="HasarliTeslim" />
+                <ScalarProperty Name="TeslimTarihi" ColumnName="TeslimTarihi" />
+                <ScalarProperty Name="AlisTarihi" ColumnName="AlisTarihi" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="OgrId" ColumnName="OgrId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KitapKategori">
+            <EntityTypeMapping TypeName="ekosModel.KitapKategori">
+              <MappingFragment StoreEntitySet="KitapKategori">
+                <ScalarProperty Name="KategoriAd" ColumnName="KategoriAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kitaplar">
+            <EntityTypeMapping TypeName="ekosModel.Kitaplar">
+              <MappingFragment StoreEntitySet="Kitaplar">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="KitapArsivde" ColumnName="KitapArsivde" />
+                <ScalarProperty Name="KitapRafta" ColumnName="KitapRafta" />
+                <ScalarProperty Name="SayfaSayisi" ColumnName="SayfaSayisi" />
+                <ScalarProperty Name="YayineviId" ColumnName="YayineviId" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="TercumanId" ColumnName="TercumanId" />
+                <ScalarProperty Name="YazarId" ColumnName="YazarId" />
+                <ScalarProperty Name="KitapAdi" ColumnName="KitapAdi" />
+                <ScalarProperty Name="FotoURL" ColumnName="FotoURL" />
+                <ScalarProperty Name="SnNumarasi" ColumnName="SnNumarasi" />
+                <ScalarProperty Name="Isbn" ColumnName="Isbn" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KitapNotlar">
+            <EntityTypeMapping TypeName="ekosModel.KitapNotlar">
+              <MappingFragment StoreEntitySet="KitapNotlar">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Notlar" ColumnName="Notlar" />
+                <ScalarProperty Name="KitapId" ColumnName="KitapId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KodHataListesi">
+            <EntityTypeMapping TypeName="ekosModel.KodHataListesi">
+              <MappingFragment StoreEntitySet="KodHataListesi">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Bilgi" ColumnName="Bilgi" />
+                <ScalarProperty Name="KodNo" ColumnName="KodNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ogrenciler">
+            <EntityTypeMapping TypeName="ekosModel.Ogrenciler">
+              <MappingFragment StoreEntitySet="Ogrenciler">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="KitapAlmaSayisi" ColumnName="KitapAlmaSayisi" />
+                <ScalarProperty Name="KutuphaneBlok" ColumnName="KutuphaneBlok" />
+                <ScalarProperty Name="DisiplinCezali" ColumnName="DisiplinCezali" />
+                <ScalarProperty Name="MezunMu" ColumnName="MezunMu" />
+                <ScalarProperty Name="SinifNo" ColumnName="SinifNo" />
+                <ScalarProperty Name="BolumId" ColumnName="BolumId" />
+                <ScalarProperty Name="OgrEposta" ColumnName="OgrEposta" />
+                <ScalarProperty Name="OgrTel" ColumnName="OgrTel" />
+                <ScalarProperty Name="OgrSoyad" ColumnName="OgrSoyad" />
+                <ScalarProperty Name="OgrAd" ColumnName="OgrAd" />
+                <ScalarProperty Name="OgrNo" ColumnName="OgrNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personel">
+            <EntityTypeMapping TypeName="ekosModel.Personel">
+              <MappingFragment StoreEntitySet="Personel">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="SistemeGirisSayisi" ColumnName="SistemeGirisSayisi" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="VarsayilanKitapGeciktirme" ColumnName="VarsayilanKitapGeciktirme" />
+                <ScalarProperty Name="TelNo" ColumnName="TelNo" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="GorselUrl" ColumnName="GorselUrl" />
+                <ScalarProperty Name="PersonelNo" ColumnName="PersonelNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelBeniHatirla">
+            <EntityTypeMapping TypeName="ekosModel.PersonelBeniHatirla">
+              <MappingFragment StoreEntitySet="PersonelBeniHatirla">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelHataliGiris">
+            <EntityTypeMapping TypeName="ekosModel.PersonelHataliGiris">
+              <MappingFragment StoreEntitySet="PersonelHataliGiris">
+                <ScalarProperty Name="aktif" ColumnName="aktif" />
+                <ScalarProperty Name="GirisTespitTarih" ColumnName="GirisTespitTarih" />
+                <ScalarProperty Name="BilgisayarAdi" ColumnName="BilgisayarAdi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelLogKaydi">
+            <EntityTypeMapping TypeName="ekosModel.PersonelLogKaydi">
+              <MappingFragment StoreEntitySet="PersonelLogKaydi">
+                <ScalarProperty Name="CikisTarihi" ColumnName="CikisTarihi" />
+                <ScalarProperty Name="GirisTarihi" ColumnName="GirisTarihi" />
+                <ScalarProperty Name="ProgramAdi" ColumnName="ProgramAdi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonelSifre">
+            <EntityTypeMapping TypeName="ekosModel.PersonelSifre">
+              <MappingFragment StoreEntitySet="PersonelSifre">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="PersonelId" ColumnName="PersonelId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SmsGecmisi">
+            <EntityTypeMapping TypeName="ekosModel.SmsGecmisi">
+              <MappingFragment StoreEntitySet="SmsGecmisi">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Smsİcerik" ColumnName="Smsİcerik" />
+                <ScalarProperty Name="OgrId" ColumnName="OgrId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TalepEdilenKitaplar">
+            <EntityTypeMapping TypeName="ekosModel.TalepEdilenKitaplar">
+              <MappingFragment StoreEntitySet="TalepEdilenKitaplar">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="EkstraNot" ColumnName="EkstraNot" />
+                <ScalarProperty Name="YayineviAdi" ColumnName="YayineviAdi" />
+                <ScalarProperty Name="YazarAdSoyad" ColumnName="YazarAdSoyad" />
+                <ScalarProperty Name="KitapAd" ColumnName="KitapAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YardimMerkezi">
+            <EntityTypeMapping TypeName="ekosModel.YardimMerkezi">
+              <MappingFragment StoreEntitySet="YardimMerkezi">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Cevap" ColumnName="Cevap" />
+                <ScalarProperty Name="Soru" ColumnName="Soru" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yayinevi">
+            <EntityTypeMapping TypeName="ekosModel.Yayinevi">
+              <MappingFragment StoreEntitySet="Yayinevi">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Iletişim" ColumnName="Iletişim" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="YayineviAd" ColumnName="YayineviAd" />
+                <ScalarProperty Name="LogoURL" ColumnName="LogoURL" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yazarlar">
+            <EntityTypeMapping TypeName="ekosModel.Yazarlar">
+              <MappingFragment StoreEntitySet="Yazarlar">
+                <ScalarProperty Name="KayitTarih" ColumnName="KayitTarih" />
+                <ScalarProperty Name="YazarEposta" ColumnName="YazarEposta" />
+                <ScalarProperty Name="YazarHakkinda" ColumnName="YazarHakkinda" />
+                <ScalarProperty Name="YazarSoyad" ColumnName="YazarSoyad" />
+                <ScalarProperty Name="YazarAd" ColumnName="YazarAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
